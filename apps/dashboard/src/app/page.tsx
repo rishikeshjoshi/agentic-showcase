@@ -1,9 +1,15 @@
-import fs from 'fs';
-import path from 'path';
+"use client";
+import { useEffect, useState } from 'react';
 
-export default async function Dashboard() {
-  const filePath = path.join(process.cwd(), 'data', 'tasks.json');
-  const tasks = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+export default function Dashboard() {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/tasks')
+      .then(res => res.json())
+      .then(data => setTasks(data))
+      .catch(console.error);
+  }, []);
 
   return (
     <div className="bg-slate-900 text-emerald-500 min-h-screen p-8">
