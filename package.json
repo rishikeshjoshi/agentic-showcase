@@ -1,14 +1,30 @@
 {
   "name": "agentic-showcase-root",
+  "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
-    "test": "vitest"
+    "dev": "npx concurrently --kill-others \"node services/api-server/index.js\" \"REACT_APP_API_URL=http://localhost:3001 npm start --prefix apps/dashboard\"",
+    "test:e2e": "npx concurrently --kill-others --success first \"node services/api-server/index.js\" \"npm run dev\" \"npx playwright test\""
   },
   "devDependencies": {
-    "vitest": "^1.0.0",
-    "typescript": "^5.0.0"
-  }
+    "concurrently": "^8.2.2"
+  },
+  "description": "This repository is a **fully autonomous, agent-driven monorepo**. It serves as a living laboratory for a zero-human-intervention software lifecycle.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishikeshjoshi/agentic-showcase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rishikeshjoshi/agentic-showcase/issues"
+  },
+  "homepage": "https://github.com/rishikeshjoshi/agentic-showcase#readme"
 }
