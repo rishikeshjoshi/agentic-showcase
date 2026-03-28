@@ -12,10 +12,10 @@ The goal is for a single AI Agent to manage the entire codebase. The agent ident
 ## 📋 The "File-Drop" Protocol
 This is the only interface for human direction:
 
-1. **Human:** Drops a `.md` task file into `/todos` on the `main` branch.
-2. **Agent:** Monitors `main`, pulls the task, and implements the logic.
+1. **Human:** Drops a `.md` task file into `/todos` on the `master` branch.
+2. **Agent:** Monitors `master`, pulls the task, and implements the logic.
 3. **Agent:** Updates `tasks.json` with the new entry (ID, status, timestamp).
-4. **Agent:** Pushes code to `main` branch.
+4. **Agent:** Pushes code to `master` branch.
 5. **Agent:** mentions the task id in the commit messages.
 6. **Agent:** Moves the task file from `/todos` to `/archives` once the task is complete.
 
